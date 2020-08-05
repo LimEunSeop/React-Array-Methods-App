@@ -1,13 +1,12 @@
-### React Mini Project {E0}
-배열(Array) 메서드를 활용하여 동작을 정의한 기초적인 리엑트 프로젝트 입니다.
+# React Array Methods App
+Array 관련 함수들을 React 와 같이쓰기위한 기초 동작을 다룬 프로젝트입니다.
 
-![E0 Project](https://github.com/LimEunSeop/TIL-React-Framework/blob/master/assets/3-1-1.png?raw=true)
+## 사용 기술
+- FrontEnd : React
+- Testing : React Testing Library + Jest
+- State Management : Context API
 
-#### 사용 기술
-- React Testing Library + Jest
-- Context API
-
-#### 프로젝트 수행 순서
+## 프로젝트 수행 순서
 모든 개발은 ```App.test.js``` 내에서 TDD 방식으로 먼저 진행되었습니다.
 1. ```create-react-app``` 으로 프로젝트 생성
 2. ```public``` 디렉터리 내의 기본적인 정적 리소스 재구성
@@ -17,11 +16,18 @@
 6. ```/src/components``` 로 컴포넌트 분리
 7. ```/src/contexts``` 에 Context 생성후 적용
 
-<details open>
-<summary>공부내용</summary>
-<div markdown="1">
+## 구현 기능
+- List Item 추가 : 자산가 추가
+- List Item 수정 : 자산 x2 증가
+- List Item 삭제 : 5억원 걸러내기
+- List Item 정렬 : 자산 순별 정렬
+- List Item 총합 : 자산 총액 계산
+![작동화면](https://github.com/LimEunSeop/assets/blob/master/images/react-array-method-app/react-array-method-app.gif?raw=true)
 
-#### 정적리소스
+
+## 공부 Memo
+
+### 정적리소스
 기본 정적 리소스에 나만의 리소스를 교체하고, manifest.json 을 수정해줘야 하며, 1번째 뎁스에 있는 파일들은 현재의 규칙을 벗어나면 안 됩니다.
 > css, images 등 새로 폴더를 구성하여 페이지에 새로 추가할 리소스를 커스텀으로 관리할 수 있습니다.
 ```sh
@@ -39,16 +45,16 @@ public/
 └── robots.txt
 ```
 
-##### css
+#### css
 공통스타일(common.css), 접근성스타일(a11y.css), 웹폰트 등 변경없이 앱에서 그대로 사용될 수 있는 css 는 정적리소스로 분류합니다. 이외의 css 는 React 컴포넌트의 동적리소스로 취급되므로 꼭 잊지 않도록 합니다!!
 
-##### images
+#### images
 마찬가지로 변경없이 앱에서 그대로 사용되는 이미지들은 정적리소스로 관리됩니다. 하지만 svg 파일은 컴포넌트로 다루면 이득(애니메이션, 접근성)이 많기 때문에 일반적으로 public 정적리소스 폴더에 들어가지 않습니다.
 
-##### favicon.png
+#### favicon.png
 즐겨찾기 및 탭에 보여지는 아이콘입니다. 원래는 .ico 확장자를 썼으나 최근에는 png 파일도 가능해졌다고 합니다.
 
-##### index.html
+#### index.html
 웹 페이지가 처음으로 실행되는 곳으로, head 에서 여러 메타데이터와 정적리소스를 설정합니다. bundle 된 리엑트 스크립트가 배치되어 이곳의 actual DOM 에 렌더링됩니다. 또한 구글 analytics 도 추가할 수 있습니다. 어렵게 생각하지 않고, 그냥 하나의 html 에서는 무엇을 해야하는지 곰곰히 생각하면 될것 같습니다.
 다음과 같은 head 정보는 알아둡시다.
 ```html
@@ -69,10 +75,10 @@ public/
     <link rel="stylesheet" href="%PUBLIC_URL%/css/style.css">
 ```
 
-##### logo***.png
+#### logo***.png
 manifest.json 에서 읽히는 아이콘으로, PWA(Progressive Web App) 이 됐을 때 네이티브 환경에서 사용할 아이콘 입니다.
 
-##### manifest.json
+#### manifest.json
 앱이 네이티브 환경에서 구동되는 PWA 가 될때 제공하는 정보입니다.
 ```json
 {
@@ -110,10 +116,10 @@ theme_color : 상단 툴바의 색상
 background_color : 스플래시 화면 배경 색상  
 orientation : 특정 방향을 강제로 지정(landscape, portrait 중 설정)
 
-##### robots.txt
+#### robots.txt
 크롤링 방지차원 뭔갈 기록하는것 까진 아는데 자세히는 모릅니다. 나중에 차차 학습하기로 합니다.
 
-#### 이번에 새로 알게된 테크닉
+### 이번에 새로 알게된 테크닉
 update hook 을 위해 setState를 사용하도록 하자. state 객체가 immutable 하니 값으로는 새로운 값을 대입. 그래서 map 이나 spread 연산을 통해 새로운 객체 참조값을 만들어 주는것! 모던js에서 값 추가할때 이렇게 기존배열 spread 하고 뒤에 추가하는것. 암기하자
 ```jsx
 handleAddRandomUser = () => {
@@ -201,5 +207,3 @@ if (process.env.NODE_ENV === 'production') {
   import('./serviceWorker').then((serviceWorker) => serviceWorker.register())
 }
 ```
-</div>
-</details>
